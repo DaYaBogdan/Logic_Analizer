@@ -4,6 +4,7 @@
 
 int inputLogic(std::string&);
 int showLogic(std::string&);
+int cutLogic(std::string&);
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
 
 	menu.addElement({ 4, 4, "Input Logic", inputLogic });
 	menu.addElement({ 4, 5, "Show Logic", showLogic });
+	menu.addElement({ 4, 6, "Cut Logic", cutLogic });
 
 	menu.openMenu();
 }
@@ -37,15 +39,15 @@ int showLogic(std::string& logic)
 	return 0;
 }
 
-//int cutLogic(std::string& logic)
-//{
-//	LogicAnalizer analizer;
-//
-//	analizer.cut(logic);
-//
-//	std::cout << analizer.returnTransformedLogic() << std::endl;
-//
-//	_getch();
-//
-//	return 0;
-//}
+int cutLogic(std::string& logic)
+{
+	LogicAnalizer analizer;
+
+	analizer.cut(logic);
+
+	std::cout << analizer.returnTransformedLogic() << std::endl;
+
+	_getch();
+
+	return 0;
+}

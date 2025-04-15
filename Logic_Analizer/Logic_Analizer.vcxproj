@@ -127,10 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Function.h" />
+    <ClInclude Include="Label.h" />
     <ClInclude Include="LogicAnalizer.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="VisualMenu.h" />
+    <ClInclude Include="VisualMenu_impl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LogicAnalizer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

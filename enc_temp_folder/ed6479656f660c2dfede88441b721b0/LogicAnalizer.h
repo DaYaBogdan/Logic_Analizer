@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <list>
+#include <iostream>
 
 class LogicAnalizer
 {
@@ -12,7 +13,7 @@ public:
 	LogicAnalizer() {};
 	~LogicAnalizer() {};
 
-	/*int cut(std::string logic)
+	int cut(std::string logic)
 	{
 		std::string cuttedlogic = {};
 		int primary = 0;
@@ -38,7 +39,7 @@ public:
 		transformedLogic = cuttedlogic;
 
 		return 0;
-	}*/
+	}
 
 	int analisis(std::string logic)
 	{
