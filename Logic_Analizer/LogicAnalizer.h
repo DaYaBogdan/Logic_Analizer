@@ -12,17 +12,20 @@ public:
 	LogicAnalizer() {};
 	~LogicAnalizer() {};
 
-	/*int cut(std::string logic)
+	/*int cut()
 	{
 		std::string cuttedlogic = {};
 		int primary = 0;
 
-		for (int i = 0; i < logic.length(); ++i)
+		for (int i = 0; i < transformedLogic.length(); ++i)
 		{
-			if (logic[i] == '<')
+			if (transformedLogic[i] == '<')
 			{
-				if (logic.substr(i, 6) == "<ALPHA>") primary = 1;
-				else if (logic.substr(i, 6) == "<DIGIT>") primary = 1;
+				if (transformedLogic.substr(i, 7) == "<ALPHA>" || transformedLogic.substr(i, 7) == "<DIGIT>")
+				{
+					primary = 1;
+					i += 6;
+				}
 
 				else if (primary)
 				{
@@ -30,9 +33,17 @@ public:
 					cuttedlogic.append("<PRIMARY>");
 				}
 				
-				else cuttedlogic.append(&logic[i]);
+				else 
+				{
+					cuttedlogic.append(&transformedLogic[i]);
+				}
 			}
-			cuttedlogic.append(&logic[i]);
+			else cuttedlogic.append(&transformedLogic[i]);
+		}
+
+		if (primary)
+		{
+			cuttedlogic.append("<PRIMARY>");
 		}
 
 		transformedLogic = cuttedlogic;
@@ -42,7 +53,7 @@ public:
 
 	int analisis(std::string logic)
 	{
-		int flag = 0;
+		int flag = 1;
 		
 		for (int i = 0; i < logic.length(); ++i)
 		{
@@ -65,13 +76,13 @@ public:
 					{
 						transformedLogic.append(logicTransformation[logic.substr(i, j + 1)]);
 						i += j;
+						flag = 0;
 						break;
 					}
 				}
-				if (logicTransformation[logic.substr(i, j + 1)] == "")
+				if (flag)
 				{
 					errorIndexes.push_back(i + 1);
-					flag = 1;
 				}
 			}
 		}
