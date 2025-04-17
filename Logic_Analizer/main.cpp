@@ -26,7 +26,7 @@ int showLogic(std::string& logic)
 {
 	LogicAnalizer analizer;
 
-	if(analizer.analisis(logic))
+	analizer.analisis(logic);
 		for (const auto& elem : analizer.returnErrors())
 			std::cout << "ERROR ON INDEX: " << elem << std::endl;
 
@@ -36,16 +36,3 @@ int showLogic(std::string& logic)
 
 	return 0;
 }
-
-//int cutLogic(std::string& logic)
-//{
-//	LogicAnalizer analizer;
-//
-//	analizer.cut(logic);
-//
-//	std::cout << analizer.returnTransformedLogic() << std::endl;
-//
-//	_getch();
-//
-//	return 0;
-//}

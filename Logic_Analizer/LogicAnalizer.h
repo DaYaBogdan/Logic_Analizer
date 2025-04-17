@@ -12,65 +12,24 @@ public:
 	LogicAnalizer() {};
 	~LogicAnalizer() {};
 
-	/*int cut()
-	{
-		std::string cuttedlogic = {};
-		int primary = 0;
-
-		for (int i = 0; i < transformedLogic.length(); ++i)
-		{
-			if (transformedLogic[i] == '<')
-			{
-				if (transformedLogic.substr(i, 7) == "<ALPHA>" || transformedLogic.substr(i, 7) == "<DIGIT>")
-				{
-					primary = 1;
-					i += 6;
-				}
-
-				else if (primary)
-				{
-					primary = 0;
-					cuttedlogic.append("<PRIMARY>");
-				}
-				
-				else 
-				{
-					cuttedlogic.append(&transformedLogic[i]);
-				}
-			}
-			else cuttedlogic.append(&transformedLogic[i]);
-		}
-
-		if (primary)
-		{
-			cuttedlogic.append("<PRIMARY>");
-		}
-
-		transformedLogic = cuttedlogic;
-
-		return 0;
-	}*/
-
 	int analisis(std::string logic)
 	{
-		int flag = 1;
-		
 		for (int i = 0; i < logic.length(); ++i)
 		{
 			if (isalpha(logic[i]) && isupper(logic[i])) 
 			{
-				transformedLogic.append("<ALPHA>");
+				transformedLogic.append("<A>");
 			}
 
 			else if (isdigit(logic[i])) 
 			{
-				transformedLogic.append("<DIGIT>");
+				transformedLogic.append("<D>");
 			}
 
 			else if (1) 
-			{		
-				int j = 0;
-				for (; i + j < logic.length() && j < logicTransformationMaxLength; ++j)
+			{
+				int flag = 1;
+				for (int j = 0; i + j < logic.length() && j < logicTransformationMaxLength; ++j)
 				{
 					if (logicTransformation[logic.substr(i, j + 1)] != "")
 					{
@@ -87,7 +46,7 @@ public:
 			}
 		}
 
-		return flag;
+		return 0;
 	}
 
 
@@ -104,7 +63,7 @@ public:
 
 private:
 
-	int logicTransformationMaxLength = 6;
+	int logicTransformationMaxLength = 5;
 	
 	std::list <int> errorIndexes = {};
 
@@ -112,17 +71,17 @@ private:
 
 	std::map <std::string, std::string> logicTransformation
 	{
-		{"!", "<EXCLAMATION>"},
-		{"&", "<AMPERSANT>"},
+		{"!", "<EXCLAM>"},
+		{"&", "<AMPER>"},
 		{"#", "<SHARP>"},
-		{"for", "<START_CYCLE>"},
-		{"to", "<MIDDLE_CYCLE>"},
-		{"do", "<END_CYCLE>"},
-		{";", "<END_LINE>"},
-		{"begin", "<BLOCK_BEGIN>"},
-		{"end", "<BLOCK_END>"},
-		{"var", "<VARIABLE>"},
-		{":=", "<ASSIGNMENT>"}
+		{"for", "<ST_C>"},
+		{"to", "<MID_C>"},
+		{"do", "<END_C>"},
+		{";", "<CLOSE>"},
+		{"begin", "<B_BEG>"},
+		{"end", "<B_END>"},
+		{"var", "<VAR>"},
+		{":=", "<ASSIGN>"}
 	};
 };
 
