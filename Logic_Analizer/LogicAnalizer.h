@@ -12,18 +12,19 @@ public:
 	LogicAnalizer() {};
 	~LogicAnalizer() {};
 
-	int analisis(std::string logic)
+	int analisis(std::string& logic)
 	{
+		compresser(logic);
 		for (int i = 0; i < logic.length(); ++i)
 		{
 			if (isalpha(logic[i]) && isupper(logic[i])) 
 			{
-				transformedLogic.append("<A>");
+				transformedLogic.append("<ALPHA>");
 			}
 
 			else if (isdigit(logic[i])) 
 			{
-				transformedLogic.append("<D>");
+				transformedLogic.append("<DIGIT>");
 			}
 
 			else if (1) 
@@ -49,17 +50,12 @@ public:
 		return 0;
 	}
 
-
-
 	std::list <int> returnErrors()
 	{
 		return errorIndexes;
 	}
 
-	std::string returnTransformedLogic()
-	{
-		return transformedLogic;
-	}
+	std::string transformedLogic = {};
 
 private:
 
@@ -67,22 +63,30 @@ private:
 	
 	std::list <int> errorIndexes = {};
 
-	std::string transformedLogic = {};
-
 	std::map <std::string, std::string> logicTransformation
 	{
-		{"!", "<EXCLAM>"},
+		{"!", "<EXCLA>"},
 		{"&", "<AMPER>"},
 		{"#", "<SHARP>"},
-		{"for", "<ST_C>"},
+		{"for", "<STA_C>"},
 		{"to", "<MID_C>"},
 		{"do", "<END_C>"},
 		{";", "<CLOSE>"},
 		{"begin", "<B_BEG>"},
 		{"end", "<B_END>"},
-		{"var", "<VAR>"},
-		{":=", "<ASSIGN>"}
+		{"var", "<VARIA>"},
+		{":=", "<ASSIG>"}
 	};
+
+	void compresser(std::string& logic)
+	{
+		for(int i = logic.find(' '); i > 0; i = logic.find(' '))
+			logic.erase(logic.begin() + i);
+
+		for (int i = logic.find('\t'); i > 0; i = logic.find('\t'))
+			logic.erase(logic.begin() + i);
+
+	}
 };
 
 #endif

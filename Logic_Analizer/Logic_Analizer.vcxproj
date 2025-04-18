@@ -132,6 +132,7 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="LogicAnalizer.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="SyntaxisAnalizer.h" />
     <ClInclude Include="VisualMenu.h" />
     <ClInclude Include="VisualMenu_impl.h" />
   </ItemGroup>
